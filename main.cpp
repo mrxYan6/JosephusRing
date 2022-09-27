@@ -88,13 +88,15 @@ int main() {
 	int number = 1;//报数报到第几号了
 	while (!lst.empty()) {
 		if (number != m) {
+			//没死，出队并排到队尾
 			auto alive = lst.front();
-			lst.push(alive);//没死，出队并排到队尾
+			lst.push(alive);
 			lst.pop();
 			number++;
 		} else {
+			//死了，出队
 			auto alive = lst.front();
-			lst.pop();//死了，出队
+			lst.pop();
 			std::cout << alive.first << ' ';//输出编号
 			m = alive.second;//m改变
 			number = 1;//重新计数
