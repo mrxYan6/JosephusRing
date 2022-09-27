@@ -5,6 +5,7 @@
 
 ## Sample input
 20 7 
+
 3 1 7 2 4 8 4
 
 ## Sample output
