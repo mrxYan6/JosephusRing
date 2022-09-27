@@ -13,20 +13,19 @@ public:
 };
 
 
-//template class circular linked type
+//基于单向循环链表实现的队列
 template<typename Type>
 class MyQueue {
 	Node<Type>* head, * tail;
-	size_t len;
 public:
 	using node = Node<Type>;
 
 	MyQueue() {
-		len = 0;
 		head = tail = nullptr;
 	}
 
-	void push_back(Type x) {
+	//插入队尾
+	void push(Type x) {
 		if (head == nullptr) {
 			head = new node(x);
 			tail = head;
@@ -39,7 +38,7 @@ public:
 		}
 	}
 
-	void pop_front() {
+	void pop() {
 		if (head == head->nxt) {
 			delete head;
 			head = tail = nullptr;
@@ -53,10 +52,6 @@ public:
 
 	Type front() {
 		return head->data;
-	}
-
-	size_t size() const {
-		return len;
 	}
 
 	bool empty() const {
@@ -87,18 +82,19 @@ int main() {
 	for (int i = 1; i <= n; ++i) {
 		int cur;
 		std::cin >> cur;
-		lst.push_back({i, cur});
+		lst.push({i, cur});
 	}
+
 	int number = 1;//报数报到第几号了
 	while (!lst.empty()) {
 		if (number != m) {
 			auto alive = lst.front();
-			lst.push_back(alive);//没死，出队并排到队尾
-			lst.pop_front();
+			lst.push(alive);//没死，出队并排到队尾
+			lst.pop();
 			number++;
 		} else {
 			auto alive = lst.front();
-			lst.pop_front();//死了，出队
+			lst.pop();//死了，出队
 			std::cout << alive.first << ' ';//输出编号
 			m = alive.second;//m改变
 			number = 1;//重新计数
