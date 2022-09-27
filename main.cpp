@@ -95,10 +95,10 @@ int main() {
 			number++;
 		} else {
 			//死了，出队
-			auto alive = lst.front();
+			auto died = lst.front();
 			lst.pop();
-			std::cout << alive.first << ' ';//输出编号
-			m = alive.second;//m改变
+			std::cout << died.first << ' ';//输出编号
+			m = died.second;//m改变
 			number = 1;//重新计数
 		}
 	}
